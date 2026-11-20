@@ -9,7 +9,7 @@ A Paseo Explorer panel for the `todo.md` file in each workspace's root.
 - Refresh external changes and check for conflicts before saving.
 
 ```markdown
-- [ ] Buy milk 📆 2026-12-01
+- [ ] Buy milk 📅 2026-12-01
 - [x] Finished task
 ```
 

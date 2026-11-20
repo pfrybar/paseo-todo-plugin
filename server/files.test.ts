@@ -17,7 +17,7 @@ test("creates todo.md on first add and persists edits, toggles, and deletion", a
   assert.equal(view.exists, false);
   let result = await files.change(path, view.revision, { kind: "add", title: "Buy milk", dueDate: "2026-11-20" });
   assert.equal(result.ok, true);
-  assert.equal(await readFile(path, "utf8"), "- [ ] Buy milk 📆 2026-11-20\n");
+  assert.equal(await readFile(path, "utf8"), "- [ ] Buy milk 📅 2026-11-20\n");
   result = await files.change(path, result.snapshot.revision, { kind: "edit", id: 1, title: "Buy oat milk", dueDate: null });
   result = await files.change(path, result.snapshot.revision, { kind: "setDone", id: 1, done: true });
   assert.equal(await readFile(path, "utf8"), "- [x] Buy oat milk\n");
@@ -54,7 +54,7 @@ test("migrates prototype tasks only into a missing file", async (t) => {
   const { path, files } = await fixture(t);
   const seed = [{ id: 9, title: "Keep my task", done: true, dueDate: "2026-11-20" }];
   assert.equal((await files.read(path, seed)).tasks[0].title, "Keep my task");
-  assert.equal(await readFile(path, "utf8"), "- [x] Keep my task 📆 2026-11-20\n");
+  assert.equal(await readFile(path, "utf8"), "- [x] Keep my task 📅 2026-11-20\n");
   await writeFile(path, "");
   assert.deepEqual((await files.read(path, seed)).tasks, []);
   assert.equal(await readFile(path, "utf8"), "");

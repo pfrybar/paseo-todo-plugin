@@ -23,7 +23,7 @@ export function parseMarkdown(text: string): Task[] {
     if (fence) continue;
     const match = line.text.match(checkbox);
     if (!match) continue;
-    const suffix = match[4].match(/\s+📆\uFE0F?\s+(\d{4}-\d{2}-\d{2})\s*$/u);
+    const suffix = match[4].match(/\s+📅\uFE0F?\s+(\d{4}-\d{2}-\d{2})\s*$/u);
     const hasDate = suffix !== null && dueDateSchema.safeParse(suffix[1]).success;
     tasks.push({
       id: index + 1,
@@ -36,7 +36,7 @@ export function parseMarkdown(text: string): Task[] {
 }
 
 function body(title: string, dueDate: string | null): string {
-  return title.trim() + (dueDate ? ` 📆 ${dueDate}` : "");
+  return title.trim() + (dueDate ? ` 📅 ${dueDate}` : "");
 }
 
 export function taskLine(task: Pick<Task, "title" | "dueDate" | "done">): string {

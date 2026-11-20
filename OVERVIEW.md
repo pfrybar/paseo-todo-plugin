@@ -9,7 +9,7 @@ The editor stays at the top for mobile keyboard visibility.
 The file uses ordinary Markdown task lines:
 
 ```markdown
-- [ ] Buy milk 📆 2026-12-01
+- [ ] Buy milk 📅 2026-12-01
 - [x] Finish a task
 ```
 
